@@ -13,7 +13,7 @@ button {
   border: none;
 }
 
-.Header {
+.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -64,4 +64,110 @@ button {
 
 .connect_wallet:hover {
   background-position: right center;
+}
+
+.content {
+  margin-top: 150px;
+  padding: 0 100px;
+}
+
+.disconnect-modal {
+  padding: 16px;
+  background-color: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 24rem;
+  border-radius: 1rem;
+  width: 100%;
+  z-index: 2;
+  display: none;
+}
+
+.disconnect-modal-on {
+  display: inherit;
+  flex-direction: column;
+}
+
+.disconnect-content {
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.disconnect-content > h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.disconnect-content > span {
+  font-size: 16px;
+}
+
+.disconnect-btns {
+  gap: 0.5rem;
+  width: 100%;
+  display: flex;
+  text-align: center;
+}
+
+.disconnect-btns > button {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  border-radius: 0.5rem;
+  display: inline-flex;
+  height: 3.5rem;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.disconnect-cancel {
+  color: #2222224d;
+  background-color: #f4f4f4;
+}
+
+.disconnect-cancel:hover {
+  color: #222;
+  background-color: #f1f1f1;
+}
+
+.disconnect-button {
+  color: #fff;
+  background-color: #0038ff;
+}
+
+.disconnect-button:hover {
+  color: #222;
+  background-color: #f1f1f1;
+}
+
+.disconnect-dimm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: none;
+}
+
+.disconnect-dimm.disconnect-modal-on {
+  display: inherit;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  height: 3rem;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.buttonContainer:hover {
+  background-color: #eee;
+  border-radius: 10px;
 }

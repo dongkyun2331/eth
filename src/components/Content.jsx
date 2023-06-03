@@ -26,8 +26,8 @@ function Content(props) {
 
   const labelStyle = {
     position: "absolute",
-    top: "22px",
-    left: inputValue.length > 0 ? `${40 + inputValue.length * 12}px` : "40px",
+    top: "110px",
+    left: inputValue.length > 0 ? `${65 + inputValue.length * 12}px` : "65px",
     fontWeight: "400",
     fontSize: "16px",
   };
@@ -139,7 +139,7 @@ function Content(props) {
                 type="number"
                 id="withdrawAmount"
                 placeholder="0"
-                step="0.0001"
+                step="0.000001"
                 value={inputValue}
                 onChange={handleInputChange}
               />
@@ -148,16 +148,16 @@ function Content(props) {
                 id="withdrawAddress"
                 placeholder="withdraw address"
               />
-              <div className="exchange-value-input">
-                <span>Balance ETH</span>
-                <span className="pointer">{displayCurrentBalance}</span>
-                <button
-                  className="exchange-value-input-max"
-                  onClick={handleMaxClick}
-                >
-                  max
+              <span style={labelStyle}>ETH</span>
+              <article className="max">
+                BALANCE ETH
+                <button>
+                  <span className="max_number">{displayCurrentBalance}</span>
+                  <span className="max_text" onClick={handleMaxClick}>
+                    MAX
+                  </span>
                 </button>
-              </div>
+              </article>
               <input type="submit" className="submit" value="withdraw" />
             </form>
           )}

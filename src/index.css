@@ -25,7 +25,7 @@ button {
   z-index: 1;
   transition: height 0.5s;
   background-color: #fff;
-  padding: 0 100px;
+  padding: 0 24px;
 }
 
 .logo {
@@ -68,7 +68,7 @@ button {
 
 .content {
   margin-top: 150px;
-  padding: 0 100px;
+  padding: 0 24px;
 }
 
 .disconnect-modal {
@@ -170,4 +170,107 @@ button {
 .buttonContainer:hover {
   background-color: #eee;
   border-radius: 10px;
+}
+
+ul {
+  list-style: none;
+}
+
+.section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  margin-top: 140px;
+  gap: 1.5rem;
+}
+
+.mint {
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #cdf1ec;
+  padding: 20px;
+}
+
+.lavender {
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #e3ecfb;
+}
+
+.balance-btns {
+  margin-top: 1rem;
+  gap: 0.5rem;
+}
+
+.balance-btns > button {
+  font-size: 0.875rem;
+  padding: 0 1rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  height: 3rem;
+  width: 50%;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2222221a;
+}
+
+.balance-btns > button > svg {
+  margin-right: 12px;
+}
+
+.deposit {
+  color: #fff;
+}
+
+.deposit:active,
+.withdraw:active {
+  top: 1px;
+  border-color: rgba(0, 0, 0, 0.34) rgba(0, 0, 0, 0.21) rgba(0, 0, 0, 0.21);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.89), 0 1px rgba(0, 0, 0, 0.05) inset;
+}
+
+.withdraw {
+  color: #222;
+}
+
+.balance {
+  padding: 20px;
+  text-align: center;
+}
+
+.balance > h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.balance > span {
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.balance > p {
+  font-size: 10px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .section {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .balance-btns {
+    display: flex;
+  }
+}
+
+@media (max-width: 768px) {
+  .balance-btns > button {
+    margin-bottom: 8px;
+    width: 100%;
+  }
 }

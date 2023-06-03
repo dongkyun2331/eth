@@ -125,19 +125,14 @@ function ChatBot() {
           setMessages((messages) => [...messages, chatbotMessage]);
         })
         .catch((error) => {
-          console.error("날씨 정보를 가져오는 중 오류가 발생했습니다.", error);
+          console.error("weather error", error);
           const chatbotMessage = {
-            text: `${cityName}의 이번 주 날씨 정보를 가져올 수 없습니다. 영어도시명 이번 주 라고 물어봐주세요. 띄어쓰기 해주세요. 한국 주요도시는 한글지원이 됩니다.`,
+            text: `${cityName} weather error`,
             isSent: false,
           };
           setMessages((messages) => [...messages, chatbotMessage]);
         });
       return;
-    } else {
-      chatbotMessage = {
-        text: "command :\n binance\n upbit\n {city} weather\n {city} week",
-        isSent: false,
-      };
     }
     if (inputText.includes("upbit")) {
       chatbotMessage = {
@@ -148,6 +143,30 @@ function ChatBot() {
     if (inputText.includes("binance")) {
       chatbotMessage = {
         text: `https://www.binance.com/`,
+        isSent: false,
+      };
+    }
+    if (inputText.includes("top10")) {
+      fetch(
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=true&price_change_percentage=24h"
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          const coinData = data
+            .map(
+              (coin) =>
+                `${coin.name}: $${coin.current_price} (${coin.price_change_percentage_24h}% 24h change)`
+            )
+            .join("\n");
+          chatbotMessage = {
+            text: coinData,
+            isSent: false,
+          };
+          setMessages((messages) => [...messages, chatbotMessage]);
+        });
+    } else {
+      chatbotMessage = {
+        text: "Command: \nweather {city} \nupbit \nbinance \ntop10",
         isSent: false,
       };
     }

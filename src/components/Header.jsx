@@ -15,11 +15,10 @@ function Header(props) {
         <h1>PORI</h1>
       </a>
       <nav className="nav">
-        <li></li>
         <li>
-          <a href="https://paint-pi.vercel.app/" target="_blank">
-            paint
-          </a>
+          <Link to={"/community"}>
+            <a href="#">Community</a>
+          </Link>
         </li>
         <li>
           {isConnected ? (

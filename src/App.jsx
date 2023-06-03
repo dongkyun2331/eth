@@ -3,6 +3,7 @@ import Content from "./components/Content";
 import { useState, useCallback, useEffect } from "react";
 import { ethers } from "ethers";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Community from "./components/Community";
 
 function App() {
   const [provider, setProvider] = useState(undefined);
@@ -143,6 +144,7 @@ function App() {
               />
             }
           />
+          <Route path="/community" element={<Community />} />
         </Routes>
       </div>
     </BrowserRouter>

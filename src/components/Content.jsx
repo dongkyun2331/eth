@@ -131,7 +131,7 @@ function Content(props) {
                 </div>
                 <CopyToClipboard text={walletAddress} onCopy={handleCopyClick}>
                   <button className="copy-button">
-                    {isCopied ? "복사 완료" : "복사"}
+                    {isCopied ? "Copy completed" : "Copy"}
                   </button>
                 </CopyToClipboard>
               </div>

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Header(props) {
   const {
     isConnected,
@@ -13,15 +15,23 @@ function Header(props) {
         <h1>PORI</h1>
       </a>
       <nav className="nav">
-        {isConnected ? (
-          <span className="buttonContainer" onClick={handleAddressClick}>
-            {displayWalletAddress} DISCONNECT
-          </span>
-        ) : (
-          <button className="connect_wallet " onClick={() => connectWallet()}>
-            CONNECT WALLET
-          </button>
-        )}
+        <li></li>
+        <li>
+          <a href="https://paint-pi.vercel.app/" target="_blank">
+            paint
+          </a>
+        </li>
+        <li>
+          {isConnected ? (
+            <span className="buttonContainer" onClick={handleAddressClick}>
+              {displayWalletAddress} DISCONNECT
+            </span>
+          ) : (
+            <button className="connect_wallet " onClick={() => connectWallet()}>
+              CONNECT WALLET
+            </button>
+          )}
+        </li>
       </nav>
       <div className="disconnect-modal">
         <div className="disconnect-content">

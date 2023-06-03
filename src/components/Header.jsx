@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Header(props) {
+export function Header(props) {
   const {
     isConnected,
     handleAddressClick,
@@ -17,6 +17,11 @@ function Header(props) {
         </a>
       </Link>
       <nav className="nav">
+        <li>
+          <Link to={"/write"}>
+            <a href="#">Write</a>
+          </Link>
+        </li>
         <li>
           <Link to={"/community"}>
             <a href="#">Community</a>

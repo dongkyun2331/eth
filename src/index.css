@@ -183,7 +183,7 @@ li {
 
 .nav {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   align-items: center;
 }
 
@@ -426,8 +426,18 @@ strong {
 }
 
 /* community */
-
+.community {
+  margin-top: 150px;
+  padding: 0 24px;
+}
 /* community */
+
+/* write */
+.write {
+  margin-top: 150px;
+  padding: 0 24px;
+}
+/* write */
 
 @media (max-width: 640px) {
   .section {

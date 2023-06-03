@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect } from "react";
 import { ethers } from "ethers";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Community from "./components/Community";
+import Write from "./components/Write";
 
 function App() {
   const [provider, setProvider] = useState(undefined);
@@ -145,6 +146,7 @@ function App() {
             }
           />
           <Route path="/community" element={<Community />} />
+          <Route path="/write" element={<Write />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -3,6 +3,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import Web3 from "web3";
 import axios from "axios";
 import TradingViewWidget, { Themes } from "react-tradingview-widget";
+import ChatBot from "./ChatBot";
 
 const web3 = new Web3(Web3.givenProvider);
 
@@ -168,6 +169,8 @@ function Content(props) {
               WITHDRAW
             </button>
           </div>
+          <h3 className="chatbot-h">CHETBOT</h3>
+          <ChatBot />
         </div>
       </section>
       {(isDepositOpen || isWithdrawOpen) && (

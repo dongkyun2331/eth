@@ -199,7 +199,7 @@ li {
   border-radius: 1rem;
   background-color: #cdf1ec;
   padding: 20px;
-  height: 80vh;
+  /* height: 80vh; */
 }
 
 .prices {
@@ -215,6 +215,7 @@ li {
   padding: 1rem;
   border-radius: 1rem;
   background-color: #e3ecfb;
+  /* height: 80vh; */
 }
 
 .balance-btns {
@@ -430,19 +431,109 @@ strong {
   cursor: pointer;
 }
 
-/* community */
-.community {
-  margin-top: 150px;
-  padding: 0 24px;
+.chatbot-h {
+  margin-top: 1rem;
 }
-/* community */
 
-/* write */
-.write {
-  margin-top: 150px;
-  padding: 0 24px;
+.chatbot-container {
+  margin-top: 0.5rem;
+  width: 100%;
+  height: 100%;
+  background-color: #bacee0;
+  /* overflow-y: hidden; */
+  position: relative;
 }
-/* write */
+
+.input-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+}
+
+.input-box {
+  width: 100%;
+  height: 40px;
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  height: 20px;
+  border: 0;
+  padding-left: 10px;
+  resize: none;
+}
+
+.input:focus {
+  outline: none;
+  vertical-align: text-top;
+}
+
+.button {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.send-button {
+  padding: 5px 10px;
+  background-color: #f2f2f2;
+  color: #b4b4b4;
+  border-radius: 5px;
+  border: 0;
+}
+
+.messages-container {
+  display: flex;
+  flex-direction: column-reverse;
+  overflow-y: auto;
+  overflow-anchor: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.messages-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+  background-color: #95a5b3;
+  border-radius: 10px;
+}
+
+.message {
+  display: flex;
+  justify-content: flex-end;
+  margin: 5px 10px;
+}
+
+.message-bubble {
+  background-color: #fee500;
+  color: #4d3636;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.message.sent .message-bubble {
+  background-color: #fff;
+}
+
+.message.sent {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.message.received {
+  display: flex;
+  justify-content: flex-start;
+}
+
+textarea {
+  font-size: 17px;
+}
 
 @media (max-width: 640px) {
   .section {

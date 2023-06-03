@@ -121,6 +121,7 @@ function App() {
     setIsConnected(false);
     handleAddressClick();
   }, []);
+
   return (
     <div>
       <Header
@@ -130,7 +131,7 @@ function App() {
         connectWallet={connectWallet}
         disconnectWallet={disconnectWallet}
       />
-      <Content />
+      <Content isConnected={isConnected} currentBalance={currentBalance} />
     </div>
   );
 }

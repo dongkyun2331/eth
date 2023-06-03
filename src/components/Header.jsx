@@ -10,10 +10,12 @@ function Header(props) {
   } = props;
   return (
     <div className="header">
-      <a href="" className="logo">
-        <img src="./images/profile.png" alt="" />
-        <h1>PORI</h1>
-      </a>
+      <Link to={"/"}>
+        <a href="#" className="logo">
+          <img src="./images/profile.png" alt="" />
+          <h1>PORI</h1>
+        </a>
+      </Link>
       <nav className="nav">
         <li>
           <Link to={"/community"}>

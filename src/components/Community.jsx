@@ -1,10 +1,14 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Community() {
   return (
-    <BrowserRouter>
-      <div className="community"></div>
-    </BrowserRouter>
+    <div className="community">
+      <div className="write">
+        <Link to={"/write"}>
+          <a href="#">Write</a>
+        </Link>
+      </div>
+    </div>
   );
 }
 

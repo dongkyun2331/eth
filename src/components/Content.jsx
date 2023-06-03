@@ -143,8 +143,13 @@ function Content(props) {
                 value={inputValue}
                 onChange={handleInputChange}
               />
+              <input
+                type="text"
+                id="withdrawAddress"
+                placeholder="withdraw address"
+              />
               <div className="exchange-value-input">
-                <span>출금 가능</span>
+                <span>Balance ETH</span>
                 <span className="pointer">{displayCurrentBalance}</span>
                 <button
                   className="exchange-value-input-max"
@@ -153,14 +158,7 @@ function Content(props) {
                   max
                 </button>
               </div>
-              <strong>출금 주소</strong>
-              <input
-                type="text"
-                id="withdrawAddress"
-                placeholder="withdraw address"
-              />
-
-              <input type="submit" className="submit" value="다음 단계로" />
+              <input type="submit" className="submit" value="withdraw" />
             </form>
           )}
         </div>

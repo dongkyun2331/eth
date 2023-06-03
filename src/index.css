@@ -275,7 +275,7 @@ ul {
 }
 
 #withdrawAmount {
-  padding: 16px 56px 64px 16px;
+  padding: 16px 56px 0 16px;
   border: 2px solid #fff;
   border-radius: 16px;
   overflow-x: hidden;
@@ -295,9 +295,6 @@ input[type="number"]::-webkit-outer-spin-button {
 
 #withdrawAddress {
   border: none;
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
 }
 
 #withdrawAddress:focus {
@@ -403,6 +400,16 @@ strong {
 .copy-button:hover {
   background-color: #e66d16;
   color: #fff;
+}
+
+.submit {
+  border: none;
+  background-color: #b39c7d;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
 }
 
 @media (max-width: 640px) {

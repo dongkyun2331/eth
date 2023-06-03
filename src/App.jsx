@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import Content from "./components/Content";
 import { useState, useCallback, useEffect } from "react";
 import { ethers } from "ethers";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   const [provider, setProvider] = useState(undefined);
@@ -122,20 +123,29 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <Header
-        isConnected={isConnected}
-        handleAddressClick={handleAddressClick}
-        displayWalletAddress={displayWalletAddress}
-        connectWallet={connectWallet}
-        disconnectWallet={disconnectWallet}
-      />
-      <Content
-        isConnected={isConnected}
-        currentBalance={currentBalance}
-        walletAddress={walletAddress}
-      />
-    </div>
+    <BrowserRouter>
+      <div>
+        <Header
+          isConnected={isConnected}
+          handleAddressClick={handleAddressClick}
+          displayWalletAddress={displayWalletAddress}
+          connectWallet={connectWallet}
+          disconnectWallet={disconnectWallet}
+        />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Content
+                isConnected={isConnected}
+                currentBalance={currentBalance}
+                walletAddress={walletAddress}
+              />
+            }
+          />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

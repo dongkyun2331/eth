@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import Web3 from "web3";
-import TradingViewWidget, { Themes } from "react-tradingview-widget";
+// import TradingViewWidget, { Themes } from "react-tradingview-widget";
 
 const web3 = new Web3(Web3.givenProvider);
 
@@ -89,13 +89,13 @@ function Content(props) {
         <div className="mint">
           <h3>ETHEREUM</h3>
           <div className="chart">
-            <TradingViewWidget
+            {/* <TradingViewWidget
               symbol={`ETHUSDT`}
               theme={Themes.DARK}
               locale="ko"
               autosize
               enable_publishing
-            />
+            /> */}
           </div>
         </div>
         <div className="lavender">

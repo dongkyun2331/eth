@@ -11,6 +11,7 @@ a {
 
 button {
   border: none;
+  background-color: inherit;
 }
 
 .header {
@@ -178,7 +179,7 @@ ul {
 
 .section {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 1fr;
   margin-top: 140px;
   gap: 1.5rem;
 }
@@ -254,6 +255,56 @@ ul {
   font-size: 10px;
   margin-top: 4px;
   font-weight: 500;
+}
+
+.balance-input {
+  position: relative;
+  color: #808080;
+}
+
+#withdrawAmount {
+  padding: 16px 56px 64px 16px;
+  border: 2px solid #fff;
+  border-radius: 16px;
+  overflow-x: hidden;
+  width: 100%;
+  font-size: 24px;
+}
+
+#withdrawAmount:focus {
+  outline: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.max {
+  font-size: 12px;
+  margin-top: 12px;
+  font-weight: 500;
+  color: #808080;
+  position: absolute;
+  bottom: 2rem;
+  left: 1rem;
+}
+
+.max > button {
+  cursor: pointer;
+}
+
+.max_number {
+  color: #222;
+  padding: 0 4px;
+  font-size: 12px;
+}
+
+.max_text {
+  color: #808080;
+  font-size: 12px;
+  border-bottom: 1px dashed;
 }
 
 @media (max-width: 640px) {

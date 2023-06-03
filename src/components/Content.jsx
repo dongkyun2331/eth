@@ -1,5 +1,23 @@
+import { useState } from "react";
+
 function Content(props) {
-  const { isConnected } = props;
+  const { isConnected, currentBalance } = props;
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const displayCurrentBalance = `${currentBalance?.toFixed(6)}`;
+
+  const labelStyle = {
+    position: "absolute",
+    top: "22px",
+    left: inputValue.length > 0 ? `${40 + inputValue.length * 12}px` : "40px",
+    fontWeight: "400",
+    fontSize: "16px",
+  };
+
   return (
     <div className="content">
       <section className="section">
@@ -9,8 +27,30 @@ function Content(props) {
         <div className="lavender">
           <h3>MY BALANCE</h3>
           <div className="balance">
-            <span>0.000000</span>
+            {isConnected ? (
+              <span>{displayCurrentBalance}</span>
+            ) : (
+              <span>0.000000</span>
+            )}
             <p>ETH</p>
+          </div>
+          <div className="balance-input">
+            <input
+              type="number"
+              id="withdrawAmount"
+              placeholder="0"
+              step="0.000001"
+              value={inputValue}
+              onChange={handleInputChange}
+            />
+            <span style={labelStyle}>ETH</span>
+            <article className="max">
+              BALANCE ETH
+              <button>
+                <span className="max_number">0.000</span>
+                <span className="max_text">MAX</span>
+              </button>
+            </article>
           </div>
           <div className="balance-btns">
             <button className="deposit">

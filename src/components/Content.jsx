@@ -59,10 +59,25 @@ function Content(props) {
     const accounts = await web3.eth.getAccounts();
     const account = accounts[0];
 
+    const withdrawAmount = e.target.withdrawAmount.value;
+    if (withdrawAmount === "") {
+      // 유효한 숫자 값이 아닌 경우에 대한 처리
+      console.error("Withdraw amount is empty");
+      return;
+    }
+
+    const withdrawAddress = e.target.withdrawAddress.value;
+    if (withdrawAddress === "") {
+      // 주소 값이 비어있는 경우에 대한 처리
+      console.error("Withdraw address is empty");
+      return;
+    }
+
+    const weiValue = web3.utils.toWei(withdrawAmount, "ether");
     await web3.eth.sendTransaction({
       from: account,
-      to: e.target.withdrawAddress.value,
-      value: web3.utils.toWei(e.target.withdrawAmount.value, "ether"),
+      to: withdrawAddress,
+      value: weiValue,
     });
     handleCloseClick();
   };

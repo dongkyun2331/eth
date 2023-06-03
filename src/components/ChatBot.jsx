@@ -145,6 +145,12 @@ function ChatBot() {
         isSent: false,
       };
     }
+    if (inputText.includes("바이낸스")) {
+      chatbotMessage = {
+        text: `https://www.binance.com/`,
+        isSent: false,
+      };
+    }
 
     // 메시지 배열에 사용자의 메시지와 챗봇의 응답을 추가
     setMessages((messages) => [...messages, chatbotMessage].filter(Boolean)); // filters out null values from array

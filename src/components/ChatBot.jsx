@@ -139,6 +139,12 @@ function ChatBot() {
         isSent: false,
       };
     }
+    if (inputText.includes("업비트")) {
+      chatbotMessage = {
+        text: `https://www.upbit.com/`,
+        isSent: false,
+      };
+    }
 
     // 메시지 배열에 사용자의 메시지와 챗봇의 응답을 추가
     setMessages((messages) => [...messages, chatbotMessage].filter(Boolean)); // filters out null values from array
@@ -213,20 +219,42 @@ function ChatBot() {
     }
   };
 
+  const renderMessage = (message, index) => {
+    if (message.text.includes("https://")) {
+      return (
+        <div
+          key={index}
+          className={`message ${message.isSent ? "sent" : "received"}`}
+        >
+          <a
+            href={message.text}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="message-bubble"
+          >
+            {message.text}
+          </a>
+        </div>
+      );
+    } else {
+      return (
+        <div
+          key={index}
+          className={`message ${message.isSent ? "sent" : "received"}`}
+        >
+          <div className="message-bubble">{message.text}</div>
+        </div>
+      );
+    }
+  };
+
   return (
     <div className="chatbot-container">
       <div className="messages-container" ref={messagesEndRef}>
         {messages
           .slice(0)
           .reverse()
-          .map((message, index) => (
-            <div
-              key={index}
-              className={`message ${message.isSent ? "sent" : "received"}`}
-            >
-              <div className="message-bubble">{message.text}</div>
-            </div>
-          ))}
+          .map((message, index) => renderMessage(message, index))}
       </div>
       <form onSubmit={handleSubmit}>
         <div className="input-container">

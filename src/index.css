@@ -189,6 +189,11 @@ ul {
   border-radius: 1rem;
   background-color: #cdf1ec;
   padding: 20px;
+  height: 80vh;
+}
+
+.chart {
+  height: 95%;
 }
 
 .lavender {

@@ -43,6 +43,10 @@ function Content(props) {
     setInputValue(false);
   };
 
+  const handleDepositClick = () => {
+    setIsDepositOpen(true);
+  };
+
   return (
     <div className="content">
       <section className="section">
@@ -86,7 +90,7 @@ function Content(props) {
             </article>
           </div>
           <div className="balance-btns">
-            <button className="deposit">
+            <button className="deposit" onClick={handleDepositClick}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"

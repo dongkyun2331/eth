@@ -131,7 +131,11 @@ function App() {
         connectWallet={connectWallet}
         disconnectWallet={disconnectWallet}
       />
-      <Content isConnected={isConnected} currentBalance={currentBalance} />
+      <Content
+        isConnected={isConnected}
+        currentBalance={currentBalance}
+        walletAddress={walletAddress}
+      />
     </div>
   );
 }

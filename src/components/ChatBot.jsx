@@ -139,13 +139,13 @@ function ChatBot() {
         isSent: false,
       };
     }
-    if (inputText.includes("업비트")) {
+    if (inputText.includes("upbit")) {
       chatbotMessage = {
         text: `https://www.upbit.com/`,
         isSent: false,
       };
     }
-    if (inputText.includes("바이낸스")) {
+    if (inputText.includes("binance")) {
       chatbotMessage = {
         text: `https://www.binance.com/`,
         isSent: false,

@@ -48,7 +48,7 @@ function ChatBot() {
     let chatbotMessage = null;
 
     // 서울 또는 부산의 날씨 정보를 가져오는 API 호출 및 처리
-    if (inputText.includes("날씨")) {
+    if (inputText.includes("weather")) {
       const cityName = inputText.split(" ")[0]; // 첫 단어가 도시명
       const city = cityNameMap[cityName] || cityName;
       let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=08af5ae1fb652af67e2f91bdf5f1c641&units=metric&lang=en`;
@@ -59,7 +59,7 @@ function ChatBot() {
           const description = weather[0].description;
           const temp = main.temp;
           chatbotMessage = {
-            text: `${cityName}의 날씨는 ${description}, 온도는 ${temp}도 입니다.`,
+            text: `${cityName} ${description}, ${temp}°C`,
             isSent: false,
           };
           // 메시지 배열에 사용자의 메시지와 챗봇의 응답을 추가
@@ -67,9 +67,9 @@ function ChatBot() {
         })
 
         .catch((error) => {
-          console.error("날씨 정보를 가져오는 중 오류가 발생했습니다.", error);
+          console.error("error", error);
           chatbotMessage = {
-            text: `${cityName}의 날씨 정보를 가져올 수 없습니다. 영어도시명 날씨 라고 물어봐주세요. 띄어쓰기 해주세요. 한국 몇몇 주요도시는 한글지원이 됩니다.`,
+            text: `${cityName} weather error`,
             isSent: false,
           };
           // 메시지 배열에 사용자의 메시지와 챗봇의 응답을 추가
@@ -77,7 +77,7 @@ function ChatBot() {
         });
       return;
     }
-    if (inputText.includes("이번 주")) {
+    if (inputText.includes("week")) {
       const cityName = inputText.split(" ")[0];
       const city = cityNameMap[cityName] || cityName;
       let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=08af5ae1fb652af67e2f91bdf5f1c641&units=metric&lang=en`;
@@ -94,11 +94,11 @@ function ChatBot() {
             forecastByDay[forecastDate].push(forecast);
           });
 
-          let messageText = `${cityName}의 이번 주 날씨 정보입니다. \n\n`;
+          let messageText = `${cityName} weather this week \n\n`;
           Object.keys(forecastByDay).forEach((date) => {
             const forecastList = forecastByDay[date];
             const dateObj = new Date(date);
-            const dateString = dateObj.toLocaleDateString("ko-KR", {
+            const dateString = dateObj.toLocaleDateString("en", {
               weekday: "long",
               year: "numeric",
               month: "long",
@@ -135,7 +135,7 @@ function ChatBot() {
       return;
     } else {
       chatbotMessage = {
-        text: "명령어 :\n 영어도시명 날씨\n 영어도시명 이번 주\n (한국 주요도시는 한글지원)",
+        text: "command :\n binance\n upbit\n {city} weather\n {city} week",
         isSent: false,
       };
     }

@@ -164,15 +164,14 @@ function ChatBot() {
   // 채팅창 높이를 동적으로 조절해주는 기능
   useEffect(() => {
     const container = document.querySelector(".messages-container");
-    const header = document.querySelector(".header");
+    const chatbotContainer = document.querySelector(".chatbot-container");
     const inputContainer = document.querySelector(".input-container");
 
     const resizeHandler = () => {
-      const windowHeight = window.innerHeight;
-      const headerHeight = header.offsetHeight;
+      const chatbotContainerHeight = chatbotContainer.offsetHeight;
       const inputContainerHeight = inputContainer.offsetHeight;
       container.style.height = `${
-        windowHeight - headerHeight - inputContainerHeight
+        chatbotContainerHeight - inputContainerHeight
       }px`;
     };
 
@@ -184,6 +183,7 @@ function ChatBot() {
       window.removeEventListener("resize", resizeHandler);
     };
   }, []);
+
   //handleInputChange 함수는 textarea에 입력된 값을 inputText 상태에 업데이트하는 역할을 합니다.
   const handleInputChange = (event) => {
     setInputText(event.target.value);

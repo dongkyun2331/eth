@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import Web3 from "web3";
-// import TradingViewWidget, { Themes } from "react-tradingview-widget";
+import axios from "axios";
+import TradingViewWidget, { Themes } from "react-tradingview-widget";
 
 const web3 = new Web3(Web3.givenProvider);
 
@@ -11,6 +12,32 @@ function Content(props) {
   const [isDepositOpen, setIsDepositOpen] = useState(false);
   const [isWithdrawOpen, setIsWithdrawOpen] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
+  const [ethBinancePrice, setEthBinancePrice] = useState(null);
+  const [ethUpbitPrice, setEthUpbitPrice] = useState(null);
+
+  useEffect(() => {
+    const fetchEthPrices = async () => {
+      try {
+        // Binance에서 이더리움 가격 가져오기
+        const binanceResponse = await axios.get(
+          "https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT"
+        );
+        const binancePrice = Number(binanceResponse.data.price).toFixed(2);
+        setEthBinancePrice(binancePrice);
+
+        // Upbit에서 이더리움 가격 가져오기
+        const upbitResponse = await axios.get(
+          "https://api.upbit.com/v1/ticker?markets=USDT-ETH"
+        );
+        const upbitPrice = Number(upbitResponse.data[0].trade_price).toFixed(2);
+        setEthUpbitPrice(upbitPrice);
+      } catch (error) {
+        console.error("Error fetching ETH prices:", error);
+      }
+    };
+
+    fetchEthPrices();
+  }, []);
 
   const handleCopyClick = () => {
     setIsCopied(true);
@@ -88,14 +115,22 @@ function Content(props) {
       <section className="section">
         <div className="mint">
           <h3>ETHEREUM</h3>
+          {ethBinancePrice && ethUpbitPrice ? (
+            <div className="prices">
+              <p>Binance: {ethBinancePrice} USDT</p>
+              <p>Upbit: {ethUpbitPrice} USDT</p>
+            </div>
+          ) : (
+            <p>Loading...</p>
+          )}
           <div className="chart">
-            {/* <TradingViewWidget
+            <TradingViewWidget
               symbol={`ETHUSDT`}
               theme={Themes.DARK}
               locale="ko"
               autosize
               enable_publishing
-            /> */}
+            />
           </div>
         </div>
         <div className="lavender">

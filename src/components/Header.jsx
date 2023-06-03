@@ -18,16 +18,6 @@ export function Header(props) {
       </Link>
       <nav className="nav">
         <li>
-          <Link to={"/write"}>
-            <a href="#">Write</a>
-          </Link>
-        </li>
-        <li>
-          <Link to={"/community"}>
-            <a href="#">Community</a>
-          </Link>
-        </li>
-        <li>
           {isConnected ? (
             <span className="buttonContainer" onClick={handleAddressClick}>
               {displayWalletAddress} DISCONNECT

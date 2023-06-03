@@ -202,8 +202,13 @@ li {
   height: 80vh;
 }
 
+.prices {
+  display: flex;
+  gap: 10px;
+}
+
 .chart {
-  height: 95%;
+  height: 90%;
 }
 
 .lavender {

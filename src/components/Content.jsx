@@ -114,6 +114,10 @@ function Content(props) {
     handleCloseClick();
   };
 
+  const priceDifference =
+    ((ethBinancePrice - ethUpbitPrice) / ethBinancePrice) * 100;
+  const percentageDifference = priceDifference.toFixed(2);
+
   return (
     <div className="content">
       <section className="section">
@@ -123,6 +127,7 @@ function Content(props) {
             <div className="prices">
               <p>Binance: {ethBinancePrice} USDT</p>
               <p>Upbit: {ethUpbitPrice} USDT</p>
+              <p>Price Difference: {percentageDifference}%</p>
             </div>
           ) : (
             <p>Loading...</p>

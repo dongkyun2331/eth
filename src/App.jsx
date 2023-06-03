@@ -10,10 +10,9 @@ function App() {
   const [currentBalance, setCurrentBalance] = useState(undefined);
   const [isConnected, setIsConnected] = useState(false);
 
-  const displayWalletAddress = `0x${walletAddress?.substring(
-    2,
-    5
-  )}...${walletAddress?.substring(38)}`;
+  const displayWalletAddress = walletAddress
+    ? `0x${walletAddress?.substring(2, 5)}...${walletAddress?.substring(38)}`
+    : "";
 
   const connectWallet = useCallback(async () => {
     try {

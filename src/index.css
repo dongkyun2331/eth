@@ -262,6 +262,18 @@ ul {
   color: #808080;
 }
 
+.withdrawpage {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  z-index: 2;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
 #withdrawAmount {
   padding: 16px 56px 64px 16px;
   border: 2px solid #fff;
@@ -279,6 +291,17 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+#withdrawAddress {
+  border: none;
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+}
+
+#withdrawAddress:focus {
+  outline: none;
 }
 
 .max {
@@ -322,7 +345,8 @@ input[type="number"]::-webkit-outer-spin-button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 1.5rem 1.5rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
   background-color: #fff;
   z-index: 2;
   overflow: hidden;

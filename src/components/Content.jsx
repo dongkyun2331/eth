@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import Web3 from "web3";
+
+const web3 = new Web3(Web3.givenProvider);
 
 function Content(props) {
   const { isConnected, currentBalance, walletAddress } = props;
   const [inputValue, setInputValue] = useState("");
-  const [isWithdrawOpen, setIsWithdrawOpen] = useState(false);
   const [isDepositOpen, setIsDepositOpen] = useState(false);
+  const [isWithdrawOpen, setIsWithdrawOpen] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopyClick = () => {
@@ -33,10 +36,6 @@ function Content(props) {
     setInputValue(displayCurrentBalance);
   };
 
-  const handleWithdrawClick = () => {
-    setIsWithdrawOpen(true);
-  };
-
   const handleCloseClick = () => {
     setIsDepositOpen(false);
     setIsWithdrawOpen(false);
@@ -44,7 +43,28 @@ function Content(props) {
   };
 
   const handleDepositClick = () => {
-    setIsDepositOpen(true);
+    if (isConnected) {
+      setIsDepositOpen(true);
+    }
+  };
+
+  const handleWithdrawClick = () => {
+    if (isConnected) {
+      setIsWithdrawOpen(true);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const accounts = await web3.eth.getAccounts();
+    const account = accounts[0];
+
+    await web3.eth.sendTransaction({
+      from: account,
+      to: e.target.withdrawAddress.value,
+      value: web3.utils.toWei(e.target.withdrawAmount.value, "ether"),
+    });
+    handleCloseClick();
   };
 
   return (
@@ -62,32 +82,6 @@ function Content(props) {
               <span>0.000000</span>
             )}
             <p>ETH</p>
-          </div>
-          <div className="balance-input">
-            <input
-              type="number"
-              id="withdrawAmount"
-              placeholder="0"
-              step="0.000001"
-              value={inputValue}
-              onChange={handleInputChange}
-            />
-            <span style={labelStyle}>ETH</span>
-            <article className="max">
-              BALANCE ETH
-              <button>
-                <span className="max_number">
-                  {isConnected ? (
-                    <span>{displayCurrentBalance}</span>
-                  ) : (
-                    <span>0.000000</span>
-                  )}
-                </span>
-                <span className="max_text" onClick={handleMaxClick}>
-                  MAX
-                </span>
-              </button>
-            </article>
           </div>
           <div className="balance-btns">
             <button className="deposit" onClick={handleDepositClick}>
@@ -136,6 +130,38 @@ function Content(props) {
                 </CopyToClipboard>
               </div>
             </div>
+          )}
+          {isWithdrawOpen && (
+            <form className="withdrawpage" onSubmit={handleSubmit}>
+              <article className="modal-title">Withdraw</article>
+              <strong>Withdraw amount</strong>
+              <input
+                type="number"
+                id="withdrawAmount"
+                placeholder="0"
+                step="0.0001"
+                value={inputValue}
+                onChange={handleInputChange}
+              />
+              <div className="exchange-value-input">
+                <span>출금 가능</span>
+                <span className="pointer">{displayCurrentBalance}</span>
+                <button
+                  className="exchange-value-input-max"
+                  onClick={handleMaxClick}
+                >
+                  max
+                </button>
+              </div>
+              <strong>출금 주소</strong>
+              <input
+                type="text"
+                id="withdrawAddress"
+                placeholder="withdraw address"
+              />
+
+              <input type="submit" className="submit" value="다음 단계로" />
+            </form>
           )}
         </div>
       )}

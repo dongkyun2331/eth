@@ -16,6 +16,9 @@ function Content(props) {
   const [ethBinancePrice, setEthBinancePrice] = useState(null);
   const [ethUpbitPrice, setEthUpbitPrice] = useState(null);
 
+  const evaluation = ethBinancePrice ? currentBalance * ethBinancePrice : 0;
+  const displayEvaluation = evaluation ? evaluation.toFixed(2) : "0.00";
+
   useEffect(() => {
     const fetchEthPrices = async () => {
       try {
@@ -138,7 +141,12 @@ function Content(props) {
           <h3>MY BALANCE</h3>
           <div className="balance">
             {isConnected ? (
-              <span>{displayCurrentBalance}</span>
+              <div>
+                <div>Total Assets: {displayEvaluation}</div>
+                <div className="displayCurrentBalance">
+                  {displayCurrentBalance}
+                </div>
+              </div>
             ) : (
               <span>0.000000</span>
             )}

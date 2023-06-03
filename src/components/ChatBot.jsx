@@ -51,7 +51,7 @@ function ChatBot() {
     if (inputText.includes("날씨")) {
       const cityName = inputText.split(" ")[0]; // 첫 단어가 도시명
       const city = cityNameMap[cityName] || cityName;
-      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=08af5ae1fb652af67e2f91bdf5f1c641&units=metric&lang=kr`;
+      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=08af5ae1fb652af67e2f91bdf5f1c641&units=metric&lang=en`;
       fetch(apiUrl)
         .then((response) => response.json())
         .then((data) => {
@@ -80,7 +80,7 @@ function ChatBot() {
     if (inputText.includes("이번 주")) {
       const cityName = inputText.split(" ")[0];
       const city = cityNameMap[cityName] || cityName;
-      let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=08af5ae1fb652af67e2f91bdf5f1c641&units=metric&lang=kr`;
+      let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=08af5ae1fb652af67e2f91bdf5f1c641&units=metric&lang=en`;
       fetch(apiUrl)
         .then((response) => response.json())
         .then((data) => {

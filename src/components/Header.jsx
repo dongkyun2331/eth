@@ -8,6 +8,7 @@ export function Header(props) {
     connectWallet,
     disconnectWallet,
   } = props;
+
   return (
     <div className="header">
       <Link to={"/"}>

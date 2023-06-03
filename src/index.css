@@ -215,7 +215,7 @@ li {
   padding: 1rem;
   border-radius: 1rem;
   background-color: #e3ecfb;
-  /* height: 80vh; */
+  height: 80vh;
 }
 
 .balance-btns {
@@ -267,7 +267,7 @@ li {
   font-weight: 500;
 }
 
-.balance > span {
+.displayCurrentBalance {
   font-size: 28px;
   font-weight: 400;
 }
@@ -438,9 +438,9 @@ strong {
 .chatbot-container {
   margin-top: 0.5rem;
   width: 100%;
-  height: 100%;
+  height: 50%;
   background-color: #bacee0;
-  /* overflow-y: hidden; */
+  overflow-y: hidden;
   position: relative;
 }
 
@@ -455,13 +455,13 @@ strong {
 
 .input-box {
   width: 100%;
-  height: 40px;
+  /* height: 40px; */
   position: relative;
 }
 
 .input {
-  width: 100%;
-  height: 20px;
+  width: 80%;
+  /* height: 20px; */
   border: 0;
   padding-left: 10px;
   resize: none;
@@ -474,7 +474,7 @@ strong {
 
 .button {
   position: absolute;
-  bottom: 5px;
+  bottom: 0;
   right: 5px;
 }
 

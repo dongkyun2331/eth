@@ -125,8 +125,13 @@ function Content(props) {
           <h3>ETHEREUM</h3>
           {ethBinancePrice && ethUpbitPrice ? (
             <div className="prices">
-              <p>Binance: {ethBinancePrice} USDT</p>
-              <p>Upbit: {ethUpbitPrice} USDT</p>
+              <p>
+                <a href="https://www.binance.com/">Binance:</a>{" "}
+                {ethBinancePrice} USDT
+              </p>
+              <p>
+                <a href="https://www.upbit.com/">Upbit:</a> {ethUpbitPrice} USDT
+              </p>
               <p>Price Difference: {percentageDifference}%</p>
             </div>
           ) : (

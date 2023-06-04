@@ -70,6 +70,20 @@ function ChatBot() {
     // 지원하는 도시들에 대해서 추가로 매핑 정보를 입력해주세요.
   };
 
+  const handleExchangeRate = (currency) => {
+    // API 호출을 통해 환율 정보를 가져오는 함수
+    fetch(`https://api.exchangerate-api.com/v4/latest/USD`)
+      .then((response) => response.json())
+      .then((data) => {
+        const exchangeRate = data.rates[currency];
+        const chatbotMessage = {
+          text: `1 USD = ${exchangeRate} ${currency}`,
+          isSent: false,
+        };
+        setMessages((messages) => [...messages, chatbotMessage]);
+      });
+  };
+
   // 입력된 메시지를 분석하고 답변을 출력하는 함수
   const handleMessage = (inputText) => {
     // 사용자가 입력한 메시지
@@ -175,6 +189,11 @@ function ChatBot() {
         text: `https://www.binance.com/`,
         isSent: false,
       };
+    }
+    if (inputText.includes("exchange rate")) {
+      const currency = inputText.split(" ")[2];
+      handleExchangeRate(currency);
+      return;
     }
     if (inputText.includes("ticker")) {
       const ticker = inputText.split(" ")[1]; // 두 번째 단어가 티커

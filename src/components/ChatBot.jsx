@@ -19,6 +19,36 @@ function ChatBot() {
     setInputText("");
   };
 
+  const handleTicker = (ticker) => {
+    fetch(
+      `https://api.binance.com/api/v3/ticker/price?symbol=${ticker.toUpperCase()}USDT`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        const binancePrice = parseFloat(data.price);
+
+        fetch(
+          `https://api.upbit.com/v1/ticker?markets=USDT-${ticker.toUpperCase()}`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            const upbitPrice = parseFloat(data[0].trade_price);
+
+            const priceDiff = binancePrice - upbitPrice;
+            const priceDiffPercentage = (priceDiff / binancePrice) * 100;
+
+            const chatbotMessage = {
+              text: `Binance: $${binancePrice}\nUpbit: $${upbitPrice}\nPrice Difference: ${priceDiffPercentage.toFixed(
+                2
+              )}%`,
+              isSent: false,
+            };
+
+            setMessages((messages) => [...messages, chatbotMessage]);
+          });
+      });
+  };
+
   const cityNameMap = {
     부산: "Busan",
     서울: "Seoul",
@@ -145,6 +175,11 @@ function ChatBot() {
         text: `https://www.binance.com/`,
         isSent: false,
       };
+    }
+    if (inputText.includes("ticker")) {
+      const ticker = inputText.split(" ")[1]; // 두 번째 단어가 티커
+      handleTicker(ticker);
+      return;
     }
     if (inputText.includes("top10")) {
       fetch(
@@ -295,7 +330,7 @@ function ChatBot() {
 
             <div className="button">
               <button id="myButton" className="send-button" ref={buttonRef}>
-                전송
+                Send
               </button>
             </div>
           </div>

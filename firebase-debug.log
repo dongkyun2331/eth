@@ -65,3 +65,28 @@ Before we get started, keep in mind:
 [info] +  Wrote functions/package.json 
 [info] +  Wrote functions/index.js 
 [info] +  Wrote functions/.gitignore 
+[debug] [2023-06-04T02:18:22.195Z] ----------------------------------------------------------------------
+[debug] [2023-06-04T02:18:22.197Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\dongk\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2023-06-04T02:18:22.197Z] CLI Version:   12.3.0
+[debug] [2023-06-04T02:18:22.197Z] Platform:      win32
+[debug] [2023-06-04T02:18:22.198Z] Node Version:  v18.14.2
+[debug] [2023-06-04T02:18:22.199Z] Time:          Sun Jun 04 2023 11:18:22 GMT+0900 (대한민국 표준시)
+[debug] [2023-06-04T02:18:22.199Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-06-04T02:18:22.270Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-06-04T02:18:22.271Z] > authorizing via signed-in user (dongkyun2331@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\eth
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+

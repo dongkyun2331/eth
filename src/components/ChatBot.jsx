@@ -207,18 +207,6 @@ function ChatBot() {
         });
       return;
     }
-    if (inputText.includes("upbit")) {
-      chatbotMessage = {
-        text: `https://www.upbit.com/`,
-        isSent: false,
-      };
-    }
-    if (inputText.includes("binance")) {
-      chatbotMessage = {
-        text: `https://www.binance.com/`,
-        isSent: false,
-      };
-    }
     if (inputText.includes("blockchain news")) {
       handleBlockchainNews();
       return;
@@ -254,7 +242,7 @@ function ChatBot() {
         });
     } else {
       chatbotMessage = {
-        text: "Command: \nweather {city} \nupbit \nbinance \ntop10 \n ticker {ticker} \n exchange rate {KRW} \n blockchain news",
+        text: "Command: \nweather {city} \ntop10 \n ticker {ticker} \n exchange rate {KRW} \n blockchain news",
         isSent: false,
       };
     }

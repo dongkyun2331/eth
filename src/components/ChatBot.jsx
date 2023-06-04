@@ -70,35 +70,6 @@ function ChatBot() {
     // 지원하는 도시들에 대해서 추가로 매핑 정보를 입력해주세요.
   };
 
-  const API_KEY = "6d61aad7afd24079bf07e94693c4268d"; // News API 키
-
-  const handleBlockchainNews = () => {
-    const url = `https://newsapi.org/v2/everything?q=blockchain&apiKey=${API_KEY}`;
-
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        const articles = data.articles;
-        const chatbotMessage = {
-          text: "Here are some recent blockchain news articles:",
-          isSent: false,
-        };
-
-        setMessages((messages) => [...messages, chatbotMessage]);
-
-        articles.forEach((article) => {
-          const articleMessage = {
-            text: `${article.title} - ${article.source.name}`,
-            isSent: false,
-          };
-          setMessages((messages) => [...messages, articleMessage]);
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   const handleExchangeRate = (currency) => {
     // API 호출을 통해 환율 정보를 가져오는 함수
     fetch(`https://api.exchangerate-api.com/v4/latest/USD`)
@@ -207,10 +178,6 @@ function ChatBot() {
         });
       return;
     }
-    if (inputText.includes("blockchain news")) {
-      handleBlockchainNews();
-      return;
-    }
     if (inputText.includes("exchange rate")) {
       const currency = inputText.split(" ")[2];
       handleExchangeRate(currency);
@@ -242,7 +209,7 @@ function ChatBot() {
         });
     } else {
       chatbotMessage = {
-        text: "Command: \n{city} weather or week \ntop10 \n ticker {ticker} \n exchange rate {KRW} \n blockchain news",
+        text: "Command: \n{city} weather or week \ntop10 \n ticker {ticker} \n exchange rate {KRW} ",
         isSent: false,
       };
     }

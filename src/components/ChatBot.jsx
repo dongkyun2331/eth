@@ -202,7 +202,7 @@ function ChatBot() {
         });
     } else {
       chatbotMessage = {
-        text: "Command: \nweather {city} \nupbit \nbinance \ntop10",
+        text: "Command: \nweather {city} \nupbit \nbinance \ntop10 \n ticker {ticker}",
         isSent: false,
       };
     }

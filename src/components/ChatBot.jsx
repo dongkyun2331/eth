@@ -242,7 +242,7 @@ function ChatBot() {
         });
     } else {
       chatbotMessage = {
-        text: "Command: \nweather {city} \ntop10 \n ticker {ticker} \n exchange rate {KRW} \n blockchain news",
+        text: "Command: \n{city} weather or week \ntop10 \n ticker {ticker} \n exchange rate {KRW} \n blockchain news",
         isSent: false,
       };
     }

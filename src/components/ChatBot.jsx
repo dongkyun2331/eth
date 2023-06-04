@@ -254,7 +254,7 @@ function ChatBot() {
         });
     } else {
       chatbotMessage = {
-        text: "Command: \nweather {city} \nupbit \nbinance \ntop10 \n ticker {ticker} \n exchange rate {KRW}",
+        text: "Command: \nweather {city} \nupbit \nbinance \ntop10 \n ticker {ticker} \n exchange rate {KRW} \n blockchain news",
         isSent: false,
       };
     }

@@ -69,6 +69,8 @@ function ChatBot() {
     제주도: "Jeju-do",
     // 지원하는 도시들에 대해서 추가로 매핑 정보를 입력해주세요.
   };
+  
+  const API_KEY = process.env.REACT_APP_API_KEY;
 
   const handleExchangeRate = (currency) => {
     // API 호출을 통해 환율 정보를 가져오는 함수

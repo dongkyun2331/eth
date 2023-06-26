@@ -126,7 +126,7 @@ function ChatBot() {
     if (inputText.includes("week")) {
       const cityName = inputText.split(" ")[0];
       const city = cityNameMap[cityName] || cityName;
-      let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=08af5ae1fb652af67e2f91bdf5f1c641&units=metric&lang=en`;
+      let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=&units=metric&lang=en`;
       fetch(apiUrl)
         .then((response) => response.json())
         .then((data) => {

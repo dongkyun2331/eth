@@ -98,6 +98,7 @@ function ChatBot() {
       const cityName = inputText.split(" ")[0]; // 첫 단어가 도시명
       const city = cityNameMap[cityName] || cityName;
       let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=en`;
+
       fetch(apiUrl)
         .then((response) => response.json())
         .then((data) => {

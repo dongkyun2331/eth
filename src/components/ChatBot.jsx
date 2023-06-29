@@ -70,6 +70,8 @@ function ChatBot() {
     // 지원하는 도시들에 대해서 추가로 매핑 정보를 입력해주세요.
   };
 
+  const API_KEY = process.env.REACT_APP_API_KEY;
+
   const handleExchangeRate = (currency) => {
     // API 호출을 통해 환율 정보를 가져오는 함수
     fetch(`https://api.exchangerate-api.com/v4/latest/USD`)
@@ -95,7 +97,7 @@ function ChatBot() {
     if (inputText.includes("weather")) {
       const cityName = inputText.split(" ")[0]; // 첫 단어가 도시명
       const city = cityNameMap[cityName] || cityName;
-      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=08af5ae1fb652af67e2f91bdf5f1c641&units=metric&lang=en`;
+      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=en`;
       fetch(apiUrl)
         .then((response) => response.json())
         .then((data) => {
@@ -124,7 +126,7 @@ function ChatBot() {
     if (inputText.includes("week")) {
       const cityName = inputText.split(" ")[0];
       const city = cityNameMap[cityName] || cityName;
-      let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=08af5ae1fb652af67e2f91bdf5f1c641&units=metric&lang=en`;
+      let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric&lang=en`;
       fetch(apiUrl)
         .then((response) => response.json())
         .then((data) => {
